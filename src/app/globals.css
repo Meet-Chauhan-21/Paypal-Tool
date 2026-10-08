@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --surface-2: #eef2f7;
+  --surface-hover: #e7edf4;
+  --border: #d9e2ec;
+  --border-soft: #e5ebf2;
+  --text: #0c0c0d;
+  --text-muted: #5b6472;
+  --text-faint: #8992a0;
+  --brand: #0070e0;
+  --brand-deep: #003087;
+  --brand-bright: #009cde;
+  --brand-soft: #e8f2fe;
+  --success: #0f8a4e;
+  --success-soft: #e5f6ec;
+  --warning: #b4650b;
+  --warning-soft: #fdf1df;
+  --danger: #c1292e;
+  --danger-soft: #fbe9e9;
+  --shadow-color: 220 30% 42%;
+}
+
+.dark {
+  --bg: #0a0c10;
+  --surface: #12151c;
+  --surface-2: #171b24;
+  --surface-hover: #1d212b;
+  --border: #242a35;
+  --border-soft: #1c212a;
+  --text: #f3f5f7;
+  --text-muted: #9aa4b2;
+  --text-faint: #6b7483;
+  --brand: #3b9cff;
+  --brand-deep: #8bc1ff;
+  --brand-bright: #44c3f0;
+  --brand-soft: #122236;
+  --success: #37c279;
+  --success-soft: #0f2419;
+  --warning: #e3a13c;
+  --warning-soft: #2a2010;
+  --danger: #f06a6e;
+  --danger-soft: #2a1414;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+@layer utilities {
+  .bg-app { background-color: var(--bg); }
+  .bg-surface { background-color: var(--surface); }
+  .bg-surface-2 { background-color: var(--surface-2); }
+  .bg-surface-hover:hover { background-color: var(--surface-hover); }
+  .bg-brand { background-color: var(--brand); }
+  .bg-brand-soft { background-color: var(--brand-soft); }
+  .bg-success-soft { background-color: var(--success-soft); }
+  .bg-warning-soft { background-color: var(--warning-soft); }
+  .bg-danger-soft { background-color: var(--danger-soft); }
+  .text-ink { color: var(--text); }
+  .text-muted { color: var(--text-muted); }
+  .text-faint { color: var(--text-faint); }
+  .text-brand { color: var(--brand); }
+  .text-brand-deep { color: var(--brand-deep); }
+  .text-success { color: var(--success); }
+  .text-warning { color: var(--warning); }
+  .text-danger { color: var(--danger); }
+  .border-subtle { border-color: var(--border); }
+  .border-soft { border-color: var(--border-soft); }
+  .border-brand { border-color: var(--brand); }
+  .ring-brand { --tw-ring-color: var(--brand); }
+  .shadow-soft { box-shadow: 0 1px 2px hsl(var(--shadow-color) / 0.06), 0 8px 24px hsl(var(--shadow-color) / 0.06); }
+  .shadow-elevated { box-shadow: 0 8px 16px hsl(var(--shadow-color) / 0.08), 0 24px 48px hsl(var(--shadow-color) / 0.12); }
+  .tabular { font-variant-numeric: tabular-nums; }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.04); opacity: 1; }
+}
+.animate-breathe { animation: breathe 3.6s ease-in-out infinite; }
+
+@keyframes orbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-orbit { animation: orbit 5s linear infinite; }
+
+@keyframes ripple {
+  0% { transform: scale(0.8); opacity: 0.55; }
+  100% { transform: scale(2.1); opacity: 0; }
+}
+.animate-ripple { animation: ripple 1.4s cubic-bezier(0.22, 0.61, 0.36, 1) infinite; }
+
+@keyframes wave {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+.animate-wave { animation: wave 1s ease-in-out infinite; }
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fade-up 0.4s ease both; }
+
+::selection {
+  background: var(--brand);
+  color: white;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+.scrollbar-thin::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; }

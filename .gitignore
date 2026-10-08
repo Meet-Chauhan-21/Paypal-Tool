@@ -1,0 +1,53 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/cache
+
+# Production & Build Outputs
+/.next/
+/out/
+/build
+/dist
+tsconfig.tsbuildinfo
+
+# Environment Variables & Secrets
+# NEVER commit credentials or secret keys to git
+.env
+.env*.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.staging
+
+# Allow committing template/example environment configs
+!.env.example
+
+# Debug and Process Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.log
+
+# Diagnostic & Coverage Tools
+/coverage
+/.nyc_output
+
+# Editor & OS Artifacts
+.DS_Store
+*.pem
+Thumbs.db
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Vercel & Deployment
+.vercel
