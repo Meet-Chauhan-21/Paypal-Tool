@@ -84,7 +84,7 @@ function NavLink({ href, label, icon: Icon, onClick }: { href: string; label: st
 
 function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   return (
-    <div className="flex h-full w-60 flex-col border-r border-subtle bg-surface px-3 py-5">
+    <aside className="flex h-full w-60 flex-col rounded-2xl border border-subtle bg-surface px-3 py-5 shadow-soft overflow-hidden">
       <Link href="/home" className="flex items-center gap-2 px-2 pb-5">
         <img src={PAYPAL_LOGO} alt="PayPal" className="h-5 w-auto" />
         <span className="text-[13px] font-semibold text-faint">ProcurePilot</span>
@@ -102,7 +102,7 @@ function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
         <p className="text-[11px] font-medium text-faint">ProcurePilot — Hackathon Concept</p>
         <p className="mt-0.5 text-[11px] text-faint">AI commerce prototype, not an official PayPal product.</p>
       </div>
-    </div>
+    </aside>
   );
 }
 
@@ -195,20 +195,24 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex h-dvh overflow-hidden bg-app">
-      <div className="hidden lg:block">
+      <div className="hidden lg:flex p-3 shrink-0">
         <Sidebar />
       </div>
 
       {mobileOpen && (
         <div className="fixed inset-0 z-50 flex lg:hidden">
-          <div className="absolute inset-0 bg-black/40" onClick={() => setMobileOpen(false)} />
-          <div className="relative z-10 h-full">
-            <div className="flex justify-end p-2">
-              <button onClick={() => setMobileOpen(false)} className="rounded-full bg-surface p-1.5 text-muted">
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-xs" onClick={() => setMobileOpen(false)} />
+          <div className="relative z-10 flex h-full p-3">
+            <Sidebar onNavigate={() => setMobileOpen(false)} />
+            <div className="ml-2 pt-1">
+              <button
+                onClick={() => setMobileOpen(false)}
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-subtle bg-surface text-muted shadow-soft hover:text-ink"
+                aria-label="Close menu"
+              >
                 <X size={16} />
               </button>
             </div>
-            <Sidebar onNavigate={() => setMobileOpen(false)} />
           </div>
         </div>
       )}

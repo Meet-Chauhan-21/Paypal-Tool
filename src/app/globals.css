@@ -125,6 +125,36 @@ body {
 }
 .animate-fade-up { animation: fade-up 0.4s ease both; }
 
+@keyframes orb-morph {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: rotate(0deg) scale(1);
+  }
+  33% {
+    border-radius: 40% 60% 70% 30% / 50% 60% 30% 60%;
+    transform: rotate(120deg) scale(1.05);
+  }
+  66% {
+    border-radius: 70% 30% 50% 50% / 30% 40% 60% 70%;
+    transform: rotate(240deg) scale(0.96);
+  }
+}
+.animate-orb-morph { animation: orb-morph 8s ease-in-out infinite; }
+.animate-orb-morph-reverse { animation: orb-morph 9s ease-in-out infinite reverse; }
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.85); opacity: 0.75; }
+  50% { opacity: 0.35; }
+  100% { transform: scale(1.75); opacity: 0; }
+}
+.animate-pulse-ring { animation: pulse-ring 3.2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite; }
+
+@keyframes plasma-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.animate-plasma-spin { animation: plasma-spin 12s linear infinite; }
+
 ::selection {
   background: var(--brand);
   color: white;
